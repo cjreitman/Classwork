@@ -6,9 +6,9 @@ class PolyTreeNode
 
   def initialize(value)
   
-  @parent = nil
-  @children = []
-  @value = value
+    @parent = nil
+    @children = []
+    @value = value
   
   end
 
@@ -34,11 +34,18 @@ class PolyTreeNode
   end
 
   def remove_child(node)
-    raise "The node is already parentless" if node.parent.nil?
-    node.parent = nil
+    # raise "The node is already parentless" if node.parent.nil?
+    # node.parent = nil
+
+    if self.children.include?(node)
+      node.parent = nil
+    else
+      raise "Error!"
+    end
   end
 
   def dfs(target)
+    
     return nil if self.nil?
     return self if self.value == target
 

@@ -61,4 +61,38 @@ class KnightPathFinder
         end
         nil
     end
+
+    def find_path(end_pos)
+        build_move_tree
+        end_node = @root_node.dfs(end_pos)
+        trace_path_back(end_node)
+        
+    end
+
+    def trace_path_back(end_node)
+        
+        path_array = [end_node.value]
+        arr_node = []
+
+        until end_node.parent.nil?
+            arr_node << end_node.parent
+            end_node = arr_node.last
+        end
+        
+        arr_node.each do |e|
+            path_array << e.value
+        end
+        return path_array.reverse
+    end
+
 end
+
+# kps = KnightPathFinder.new([0, 0])
+# kpf.build_move_tree
+# a = kps.find_path([7, 7])
+# p kps.trace_path_back(a)
+
+kpf = KnightPathFinder.new([0, 0])
+
+p kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
+p kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
