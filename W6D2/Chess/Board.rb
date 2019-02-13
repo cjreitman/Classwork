@@ -34,12 +34,12 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
-    y, x = start_pos
     
-    if @board[y][x].is_a?(Piece)
-      piece = @board[y][x]
+    
+    if self[start_pos].is_a?(Piece)
+      piece = self[start_pos]
       self[end_pos] = piece
-      @board[y][x] = nil
+      self[start_pos] = nil
     else
       raise "Please select a position with a piece"
     end
