@@ -75,20 +75,32 @@ class Array
   # (Flattens the first level of nested arrays but no deeper)
   # [["a"], "b", ["c", "d", ["e"]]].my_flatten(1) = ["a", "b", "c", "d", ["e"]]
 
-  def my_flatten(level = nil)
+  def my_flatten(level=nil)
 
-    return self if level == 0
-    return self[0] if self.length <= 1
+    if level != nil
+    return self if level < 1
     
     new_array = []
     self.each do |ele|
       if ele.is_a?(Array) 
-        new_array += self[1..-1].my_flatten(level)
+        new_array += ele.my_flatten(level - 1)
       else
         new_array << ele
       end
     end
     return new_array
+
+  else
+    new_array = []
+    self.my_each do |el|
+     if el.is_a?(Array) 
+        new_array += el.my_flatten
+     else
+        new_array << el
+     end
+    end
+    new_array
+  end
   end
 end
 
