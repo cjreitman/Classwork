@@ -15,14 +15,20 @@ class Display
 
     @board.board.each_with_index do |row, idx1|
       row.each_with_index do |cell, idx2|
-        if [idx1, idx2] == @cursor.cursor_pos
-          print "X"
-        elsif cell.is_a?(Piece)
-          print cell.to_s.colorize(:red)
+        to_print = ""
+        if cell.is_a?(Piece)
+          to_print << cell.to_s
         else
-          print "x"
+          to_print << "x"
         end
-          
+
+        if [idx1, idx2] == @cursor.cursor_pos
+          print to_print.colorize(background: :blue)
+        elsif to_print == "x"
+          print to_print
+        else 
+          print to_print.colorize(:red)
+        end
       end
       puts
     end
@@ -31,7 +37,7 @@ class Display
 
   def get_input
 
-    loop do
+    loop do #we'll have to come back to this later to replace the loop do with a check to see if the game is still playing
       system "clear"
       self.render
       @cursor.get_input
