@@ -1,5 +1,5 @@
 
-require_relative "./Piece"
+# require_relative "./Piece"
 
 class Board
 
@@ -48,11 +48,4 @@ class Board
 
 end
 
-
-board = Board.new
-piece = Piece.new("Knight")
-board.add_piece(piece, [0, 0])
-board.board
-board.move_piece([0, 0], [1, 0])
-board.board
-p board[[5, 0]]
+# p board = Board.new

@@ -45,14 +45,5 @@ class Display
 
   end
 
-   
-
+  
 end
-
-board = Board.new
-piece = Piece.new("Knight")
-board.add_piece(piece, [1, 0])
-board.add_piece(piece, [0, 0])
-display = Display.new(board)
-display.get_input
-
