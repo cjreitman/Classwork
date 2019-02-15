@@ -40,6 +40,7 @@ class Cursor
   end
 
   def get_input
+    
     puts "press a button to move the cursor"
     key = KEYMAP[read_char]
     handle_key(key)
@@ -96,8 +97,6 @@ class Cursor
     if cursor_valid_pos?(diff)
       @cursor_pos[0] += diff[0]
       @cursor_pos[1] += diff[1]
-    else
-      raise "Please select a valid position."  #later we'll want to come back and update this with begin/retry so that it doesn't kick us out of the program entirely when we enter a bad key press
     end
   end
 

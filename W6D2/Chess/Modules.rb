@@ -1,8 +1,29 @@
-
+require "byebug"
 module Stepable
 
   def moves
     
+    array = move_dirs
+    refined_moves = refined_moveset(array)
+
+  end
+
+  def refined_moveset(array)
+
+    
+    possible_moves = []
+
+    array.each do |move|
+      cy, cx = @pos
+      y, x = move
+      cy += y
+      cx += x
+      possible_moves << [cy, cx] 
+    end
+
+    possible_moves.select do
+      |move| @board.valid_pos?(move) } && !@board[move].is_a?(Piece)
+
   end
 
 end
@@ -16,7 +37,7 @@ module Slidable
     
     array.each do |dir|
       y, x = dir
-      move_array << grow_unblocked_moves_in_dir(y, x)
+      move_array += grow_unblocked_moves_in_dir(y, x)
     end
 
     move_array
@@ -32,7 +53,6 @@ module Slidable
 
   end
 
-
   def diagonal
     
     @down_and_right = [1, 1]
@@ -44,22 +64,19 @@ module Slidable
 
   private
 
-  def move_dirs 
-
-  end
-
   def grow_unblocked_moves_in_dir(dy, dx)
 
-    moves = []
+    moves = Array.new {Array.new}
     cy, cx = @pos
 
     new_pos = [cy + dy, cx + dx]
-
-    until @board[new_pos].is_a(Piece) || !@board.valid_pos?(new_pos)
-
-      moves << new_pos
-      new_pos[0] + dy
-      new_pos[1] + dx
+    
+    until !@board.valid_pos?(new_pos) || @board[new_pos].is_a?(Piece)
+      
+      sub_array = new_pos.dup
+      moves << sub_array
+      new_pos[0] += dy
+      new_pos[1] += dx
 
     end
 

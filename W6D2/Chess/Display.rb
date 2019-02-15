@@ -1,5 +1,4 @@
 require "colorize"
-require_relative "./Board.rb"
 require_relative "./cursor.rb"
 require_relative "Piece.rb"
 require "byebug"
@@ -8,23 +7,25 @@ class Display
 
   def initialize(board)
     @board = board
-    @cursor = Cursor.new([7,7], board)
+    @cursor = Cursor.new([0,0], board)
   end
 
   def render
 
     @board.board.each_with_index do |row, idx1|
+      # p idx1
       row.each_with_index do |cell, idx2|
+         
         to_print = ""
         if cell.is_a?(Piece)
-          to_print << cell.to_s
+          to_print << cell.to_s + " "
         else
-          to_print << "x"
+          to_print << "x" + " "
         end
 
         if [idx1, idx2] == @cursor.cursor_pos
           print to_print.colorize(background: :blue)
-        elsif to_print == "x"
+        elsif to_print == "x" + " "
           print to_print
         else 
           print to_print.colorize(:red)
