@@ -21,8 +21,15 @@ module Stepable
       possible_moves << [cy, cx] 
     end
 
-    possible_moves.select do
-      |move| @board.valid_pos?(move) } && !@board[move].is_a?(Piece)
+    possible_moves.select do |move| 
+      if @board.valid_pos?(move) 
+        if @board[move].is_a?(Piece)
+          self.color != @board[move].color
+        else
+          true
+        end
+      end
+    end
 
   end
 
