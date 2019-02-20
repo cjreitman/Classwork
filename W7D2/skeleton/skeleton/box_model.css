@@ -1,0 +1,44 @@
+div {
+  
+  height: 200px;
+  width: 200px
+
+}
+
+#first-div {
+  background-color: #39cccc;
+  padding: 50px;
+  border: 5px solid black;
+  
+}
+
+#second-div {
+  background-color: #ff4136;
+  padding: 50px;
+  border: 5px solid black;
+  box-sizing: border-box;
+
+}
+
+#third-div {
+ 
+  background-color: burlywood;
+  min-height: 400px;
+
+}
+
+#tall-div {
+
+  min-height: 10px;
+  background-color: lawngreen;
+}
+
+p {
+  background-color: chartreuse;
+}
+
+#pick-div {
+  min-width: 200px;
+  min-height: 600px;
+  background-color: palevioletred;
+}
