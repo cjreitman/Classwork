@@ -23,6 +23,7 @@ class HashMap
     end
     
     bucket_idx = key.hash % num_buckets
+    # debugger
     if @store[bucket_idx].include?(key)
       @store[bucket_idx].update(key, val)
     else
@@ -32,16 +33,34 @@ class HashMap
   end
 
   def get(key)
-    bucket_idx = key.hash % num_buckets
-    @store[bucket_idx].each do |node|
-      return node.val if node.key == key
-    end
+    # bucket_idx = key.hash % num_buckets
+    # @store[bucket_idx].each do |node| 
+    #   return node.val if node.key == key
+    # end
+    # nil
 
+    bucket(key).get(key) 
+    # this return a value
   end
 
   def delete(key)
-    self.set(key, nil)
-    @count -= 1
+    bucket = bucket(key)
+    if bucket
+      bucket.remove(key) 
+      @count -= 1
+    end
+
+
+    # node_val = self[bucket_idx]
+    # if node_val
+    #   @store[bucket_idx].each do |n| 
+    #     n.remove if n.key == key
+    #   end
+      # bucket.remove(key)
+      # debugger
+      # return key
+    #end
+    nil
   end
 
   def each(&prc)
@@ -80,10 +99,9 @@ class HashMap
     end
     @store = new_store
   end    
-  
 
   def bucket(key)
-    # optional but useful; return the bucket corresponding to `key`
+    @store[key.hash % num_buckets]
   end
   
 end

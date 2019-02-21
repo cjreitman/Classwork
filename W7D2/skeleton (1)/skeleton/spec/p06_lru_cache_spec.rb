@@ -1,5 +1,6 @@
 require 'rspec'
 require 'p06_lru_cache'
+require "byebug"
 
 describe LRUCache do
   describe "#get" do
@@ -53,8 +54,9 @@ describe LRUCache do
         lru.instance_variable_get(:@store).map { |l| l.key }
       ).to eq([2, 3, 0])
 
+      debugger
       lru.get(2) # cached: 3, 0, 2
-
+      debugger
       expect(
         lru.instance_variable_get(:@store).map { |l| l.key }
       ).to eq([3, 0, 2])

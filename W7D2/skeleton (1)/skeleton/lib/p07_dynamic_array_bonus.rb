@@ -1,4 +1,5 @@
 class StaticArray
+  
   attr_reader :store
 
   def initialize(capacity)
@@ -48,6 +49,18 @@ class DynamicArray
   end
 
   def push(val)
+    
+    @store[-1] = val
+    
+    
+    # i = 0
+    # while i < @store.length
+    #   if @store[i].nil?
+    #     @store[i] = val
+    #   end
+    #   i += 1
+    # end
+
   end
 
   def unshift(val)

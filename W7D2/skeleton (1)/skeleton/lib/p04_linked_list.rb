@@ -14,6 +14,18 @@ class Node
   end
 
   def remove
+
+    prev_node = self.prev
+    next_node = self.next
+
+    prev_node.next = next_node
+    next_node.prev = prev_node
+
+    self.prev = nil
+    self.next = nil
+
+    nil
+
     # optional but useful, connects previous link to next link
     # and removes self from list.
   end
@@ -23,6 +35,7 @@ require "byebug"
 class LinkedList
 
   include Enumerable
+
 
   def initialize
     @head = Node.new
@@ -69,6 +82,7 @@ class LinkedList
     new_node.prev = current_last
     new_node.next = @tail
     @tail.prev = new_node
+    new_node
   end
 
   # head -> :zero -> tail
@@ -86,22 +100,15 @@ class LinkedList
   end
 
   def remove(key)
-    if self.include?(key)
-      scrap_node = nil
-      self.each do |node|
-        
-        if node.key == key
-          scrap_node = node
-          # debugger
-        end
+  
+    self.each do |node|
+      if node.key == key
+        node.remove
+        return node.val
       end
-      
-      right_node = scrap_node.prev
-      left_node = scrap_node.next
 
-      right_node.next = left_node
-      left_node.prev = right_node
     end
+  
   end
 
   def each
