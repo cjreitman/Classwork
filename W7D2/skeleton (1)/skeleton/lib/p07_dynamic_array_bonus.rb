@@ -49,17 +49,13 @@ class DynamicArray
   end
 
   def push(val)
-    
-    @store[-1] = val
-    
-    
-    # i = 0
-    # while i < @store.length
-    #   if @store[i].nil?
-    #     @store[i] = val
-    #   end
-    #   i += 1
-    # end
+    i = @store.leng
+    while i < @store.length
+      if @store[i].nil?
+        @store[i] = val
+      end
+      i += 1
+    end
 
   end
 
