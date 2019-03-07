@@ -1,0 +1,42 @@
+<h3>Register a Cat</h3>
+
+<form action="<%=cats_url%>" method="post">    
+  <ol>
+    <li>
+      <label for="name">Cats Name</label>
+      <input id="name" type="text" name="cat[name]">
+    </li>
+
+    <li>
+      <label for="cat-color">Cats Color</label>
+      <select id="cat-color" name="cat[color]">
+
+        <option disabled selected>-- Please Select --</option>
+            <% Cat.colors.each do |color| %>
+              <option value="<%=color%>"> <%=color%> </option>
+            <% end %>
+      </select>  
+
+    </li>
+
+    <li>
+      Sex: 
+      <label for="F">F</label>
+      <input id="sex" type="radio" name="cat[sex]" value="F">
+      <label for="M">M</label>
+      <input id="sex" type="radio" name="cat[sex]" value="M">
+    </li>
+
+    <li>
+      <label for="description">Cats Description</label>
+      <textarea id="description" name="cat[description]"> </textarea>
+    </li>
+
+    <li>
+      <label for="dateinput">Birth Date</label>
+      <input type="date" name="cat[birth_date]" id="dateinput" >
+    </li>
+
+    <input type="submit" value="Cats Ahoy">
+  </ol>
+</form>
