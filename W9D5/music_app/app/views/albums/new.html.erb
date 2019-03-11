@@ -1,0 +1,32 @@
+<h4>Enter an Album</h4>
+
+<form action="<%= albums_url %>" method="POST">
+
+  <label for="album_title">Album Title: </label>
+  <input type="text" name="album[title]" id="album_title">
+
+  <br>
+  <label for="year">Year: </label>
+   <input type="text" name="album[year]" id="year">
+
+  <br>
+  <label for="band_name">Band Name: </label>
+   <select id="band_name" name="band[band_name]">
+    <option disabled selected>-- Please Select --</option>
+            <% Band.all.each do |band| %>
+              <option value="<%=band.name%>"> <%=band.name%> </option>
+            <% end %>
+    </select>
+  <br>
+  Studio Album? 
+  <label for="yes">Yes</label>
+  <input type="radio" name="album[studio_album?]" value= true id="yes" >
+  <label for="no">No</label>
+  <input type="radio" name="album[studio_album?]" value= false id="no" >
+
+  <br>
+
+  <input type="submit" value="Album Away">
+
+</form>
+
