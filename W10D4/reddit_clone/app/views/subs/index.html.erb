@@ -1,0 +1,9 @@
+<h2>SUBS</h2>
+
+<% @subs.each do |sub| %>
+<br>
+<%= link_to sub.title, sub_url(sub) %> - moderated by <strong> <%= sub.moderator.username %> </strong>
+
+<% end %>
+
+  

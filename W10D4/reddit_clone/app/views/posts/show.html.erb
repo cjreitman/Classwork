@@ -1,0 +1,28 @@
+<h4><%= @post.title %></h4>
+
+<i> <%= @post.content %> </i>
+<%= @post.url %>
+by<strong> <%= @post.author.username %> </strong>
+<br>
+<% if @post.author == current_user %>
+<br><br>
+<%= link_to 'Edit Post', edit_post_url(@post) %>
+<br>
+<form action="<%= post_url(@post) %>" method="POST">
+<input type="hidden" name="_method" value="DELETE">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<br>
+<input type="submit" value="Delete Post">
+
+</form>
+
+<% end %>
+
+<% @post.subs.each do |sub| %>
+<br>
+  Back to <%= link_to sub.title, sub_url(sub) %>
+<% end %>
+
+
+
+
