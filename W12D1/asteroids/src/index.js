@@ -3,7 +3,7 @@ let Asteroid = require("./asteroid.js");
 let Game = require("./game.js");
 
 window.Game = Game;
-uwindow.MovingObject = MovingObject;
+window.MovingObject = MovingObject;
 window.Asteroid = Asteroid;
 document.addEventListener("DOMContentLoaded", function() {
   let canvas = document.getElementById("game-canvas");
