@@ -98,11 +98,15 @@ class DOMNodeCollection {
   on(type, callback) {
     this.callBack = callback;
     for (let i = 0; i < this.elements.length; i++) {
-      this.elements[i].addEventListener(type, callback)
+      this.elements[i].addEventListener(type, callback);
     }
   }
-
-
+  
+  off(type) {
+    for (let i = 0; i < this.elements.length; i++) {
+      this.elements[i].removeEventListener(type, this.callBack);
+    }
+  }
 
 
 
