@@ -1,0 +1,38 @@
+.board {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  /* border-left: 1px solid black;
+  border-bottom: 1px solid black; */
+  border-top: 1px solid black;
+  width: 300px;
+  margin: 300px;
+}
+
+.row {
+  display: flex;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.tile {
+  width: 20px;
+  height: 20px;
+  /* border-top: 1px solid black; */
+  border-right: 1px solid black;
+  text-align: center;
+  /* text-ali */
+  box-sizing: border-box;
+}
+
+.modal-content {
+  position: absolute;
+  top: 200px;
+  margin: auto;
+  margin-left: 50px;
+  background: white;
+  padding: 20px;
+  z-index: 5000;
+  border-radius: 5px;
+  border: 1px solid black;
+}
